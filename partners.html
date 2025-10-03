@@ -1,1 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashMySaaS - Partners</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1d1d1f;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e5e5e7;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .nav-menu {
+            background: #f5f5f7;
+            border-radius: 50px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            border: 1px solid #e5e5e7;
+            flex: 2;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #1d1d1f;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: #e5e5e7;
+            color: #EC4E20;
+        }
+
+        .nav-icon {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .account-section {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1d1d1f;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.2s ease;
+            background: #f5f5f7;
+            border: 1px solid #e5e5e7;
+        }
+
+        .account-btn:hover {
+            background: #e5e5e7;
+            color: #EC4E20;
+            transform: translateY(-1px);
+        }
+
+        .account-icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        .filter-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #e5e5e7;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 12px;
+        }
+
+        .toggle-btn {
+            padding: 10px 20px;
+            background: #f5f5f7;
+            border: 1px solid #e5e5e7;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1d1d1f;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-btn:hover {
+            background: #e5e5e7;
+        }
+
+        .toggle-btn.active {
+            background: #1d1d1f;
+            color: white;
+            border-color: #1d1d1f;
+        }
+
+        .divider {
+            width: 1px;
+            height: 30px;
+            background: #e5e5e7;
+            flex-shrink: 0;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .filter-group {
+            position: relative;
+        }
+
+        .filter-select {
+            padding: 10px 16px;
+            background: #f5f5f7;
+            border: 1px solid #e5e5e7;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #1d1d1f;
+            cursor: pointer;
+            font-weight: 500;
+            appearance: none;
+            padding-right: 35px;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 14px;
+        }
+
+        .filter-select:hover {
+            background: #e5e5e7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e5e7;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: #d2d2d7;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e5e5e7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .card-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #f5f5f7;
+            border: 1px solid #e5e5e7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #1d1d1f;
+            font-size: 1.1rem;
+        }
+
+        .card-info {
+            flex: 1;
+        }
+
+        .card-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 2px;
+        }
+
+        .card-role {
+            font-size: 0.85rem;
+            color: #6e6e73;
+        }
+
+        .card-description {
+            font-size: 0.875rem;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            background: #f5f5f7;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            color: #1d1d1f;
+            font-weight: 500;
+            border: 1px solid #e5e5e7;
+        }
+
+        .agency-card .card-image {
+            height: 160px;
+        }
+
+        .agency-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            background: white;
+            border: 2px solid #e5e5e7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: #1d1d1f;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .logo {
+                flex: none;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-menu {
+                gap: 6px;
+                padding: 4px 6px;
+                flex-wrap: wrap;
+                flex: none;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-item {
+                font-size: 0.7rem;
+                padding: 4px 6px;
+                gap: 3px;
+            }
+
+            .nav-icon {
+                width: 12px;
+                height: 12px;
+            }
+
+            .account-section {
+                flex: none;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 16px;
+            }
+
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .view-toggle {
+                width: 100%;
+            }
+
+            .toggle-btn {
+                flex: 1;
+            }
+
+            .divider {
+                width: 100%;
+                height: 1px;
+            }
+
+            .filters {
+                width: 100%;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">CashMySaaS</a>
+        
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <line x1="9" y1="17" x2="15" y2="17"></line>
+                </svg>
+                Calculator
+            </a>
+            <a href="marketplace.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                Marketplace
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                </svg>
+                Leaderboard
+            </a>
+            <a href="careers.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14,2 14,8 20,8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10,9 9,9 8,9"></polyline>
+                </svg>
+                Careers
+            </a>
+            <a href="partners.html" class="nav-item active">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M20 7h-9l-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <path d="M12 11v6m3-3l-3 3-3-3"></path>
+                </svg>
+                Partners
+            </a>
+            <a href="community.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5l-4.24 4.24M7.76 16.76l-4.24 4.24M16.24 7.76l4.24-4.24M7.76 7.76L3.52 3.52"></path>
+                </svg>
+                Community
+            </a>
+        </nav>
+        <div class="account-section">
+            <a href="#" class="account-btn">
+                <svg class="account-icon" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Account
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filter-bar">
+            <div class="filter-row">
+                <div class="view-toggle">
+                    <button class="toggle-btn active" onclick="switchView('people')">People</button>
+                    <button class="toggle-btn" onclick="switchView('agencies')">Agencies</button>
+                </div>
+                <div class="divider"></div>
+                <div class="filters">
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option>All Skills</option>
+                            <option>Design</option>
+                            <option>Development</option>
+                            <option>Marketing</option>
+                            <option>Consulting</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option>All Locations</option>
+                            <option>Remote</option>
+                            <option>United States</option>
+                            <option>Europe</option>
+                            <option>Asia</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option>All Experience</option>
+                            <option>Entry Level</option>
+                            <option>Mid Level</option>
+                            <option>Senior</option>
+                            <option>Expert</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select">
+                            <option>Budget Range</option>
+                            <option>$0 - $5,000</option>
+                            <option>$5,000 - $15,000</option>
+                            <option>$15,000 - $50,000</option>
+                            <option>$50,000+</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid" id="peopleGrid">
+            <div class="card">
+                <div class="card-image">👨‍💻</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-avatar">JS</div>
+                        <div class="card-info">
+                            <div class="card-name">John Smith</div>
+                            <div class="card-role">Full Stack Developer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">Specialized in building scalable SaaS applications with React and Node.js. 8+ years of experience.</p>
+                    <div class="card-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">🎨</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-avatar">EM</div>
+                        <div class="card-info">
+                            <div class="card-name">Emily Martinez</div>
+                            <div class="card-role">UI/UX Designer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">Creating beautiful and intuitive user experiences for SaaS products. Focus on design systems.</p>
+                    <div class="card-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Branding</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">📊</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-avatar">MJ</div>
+                        <div class="card-info">
+                            <div class="card-name">Michael Johnson</div>
+                            <div class="card-role">Growth Marketer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">Helping SaaS companies scale from 0 to 1M+ ARR. Expertise in SEO, content, and paid acquisition.</p>
+                    <div class="card-tags">
+                        <span class="tag">SEO</span>
+                        <span class="tag">Content</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">💼</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-avatar">SC</div>
+                        <div class="card-info">
+                            <div class="card-name">Sarah Chen</div>
+                            <div class="card-role">Product Manager</div>
+                        </div>
+                    </div>
+                    <p class="card-description">Product strategist with experience launching B2B SaaS products. Data-driven decision maker.</p>
+                    <div class="card-tags">
+                        <span class="tag">Product</span>
+                        <span class="tag">Strategy</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">⚡</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-avatar">DW</div>
+                        <div class="card-info">
+                            <div class="card-name">David Williams</div>
+                            <div class="card-role">DevOps Engineer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">Infrastructure specialist focused on cloud architecture, CI/CD, and system reliability.</p>
+                    <div class="card-tags">
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">✍️</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <div class="card-avatar">LB</div>
+                        <div class="card-info">
+                            <div class="card-name">Lisa Brown</div>
+                            <div class="card-role">Content Writer</div>
+                        </div>
+                    </div>
+                    <p class="card-description">Technical writer creating engaging content for SaaS companies. SEO-optimized blog posts and guides.</p>
+                    <div class="card-tags">
+                        <span class="tag">Writing</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Technical</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid" id="agenciesGrid" style="display: none;">
+            <div class="card agency-card">
+                <div class="card-image">
+                    <div class="agency-logo">DS</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-name" style="margin-bottom: 8px;">Digital Solutions</div>
+                    <p class="card-description">Full-service digital agency specializing in SaaS product development and growth marketing.</p>
+                    <div class="card-tags">
+                        <span class="tag">Development</span>
+                        <span class="tag">Design</span>
+                        <span class="tag">Marketing</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card agency-card">
+                <div class="card-image">
+                    <div class="agency-logo">GS</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-name" style="margin-bottom: 8px;">Growth Studio</div>
+                    <p class="card-description">Performance marketing agency helping SaaS companies scale their customer acquisition.</p>
+                    <div class="card-tags">
+                        <span class="tag">Paid Ads</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">CRO</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card agency-card">
+                <div class="card-image">
+                    <div class="agency-logo">PD</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-name" style="margin-bottom: 8px;">Pixel Design Co</div>
+                    <p class="card-description">Design-first agency creating beautiful and functional SaaS products from concept to launch.</p>
+                    <div class="card-tags">
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Branding</span>
+                        <span class="tag">Web Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card agency-card">
+                <div class="card-image">
+                    <div class="agency-logo">CS</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-name" style="margin-bottom: 8px;">Cloud Systems</div>
+                    <p class="card-description">Infrastructure and DevOps consulting for enterprise SaaS platforms.</p>
+                    <div class="card-tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">DevOps</span>
+                        <span class="tag">Security</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card agency-card">
+                <div class="card-image">
+                    <div class="agency-logo">CB</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-name" style="margin-bottom: 8px;">Content Bros</div>
+                    <p class="card-description">Content marketing agency focused on B2B SaaS thought leadership and SEO content.</p>
+                    <div class="card-tags">
+                        <span class="tag">Content</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card agency-card">
+                <div class="card-image">
+                    <div class="agency-logo">SA</div>
+                </div>
+                <div class="card-content">
+                    <div class="card-name" style="margin-bottom: 8px;">SaaS Advisors</div>
+                    <p class="card-description">Strategic consulting for SaaS founders. From product-market fit to exit strategy.</p>
+                    <div class="card-tags">
+                        <span class="tag">Consulting</span>
+                        <span class="tag">Strategy</span>
+                        <span class="tag">Growth</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchView(view) {
+            const peopleGrid = document.getElementById('peopleGrid');
+            const agenciesGrid = document.getElementById('agenciesGrid');
+            const buttons = document.querySelectorAll('.toggle-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (view === 'people') {
+                peopleGrid.style.display = 'grid';
+                agenciesGrid.style.display = 'none';
+                buttons[0].classList.add('active');
+            } else {
+                peopleGrid.style.display = 'none';
+                agenciesGrid.style.display = 'grid';
+                buttons[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
