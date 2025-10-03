@@ -1,1 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashMySaaS - Careers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1d1d1f;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e5e5e7;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            text-decoration: none;
+            flex: 1;
+        }
+
+        .nav-menu {
+            background: #f5f5f7;
+            border-radius: 50px;
+            padding: 4px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            border: 1px solid #e5e5e7;
+            flex: 2;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #1d1d1f;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover, .nav-item.active {
+            background: #e5e5e7;
+            color: #EC4E20;
+        }
+
+        .nav-icon {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .account-section {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .account-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #1d1d1f;
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.2s ease;
+            background: #f5f5f7;
+            border: 1px solid #e5e5e7;
+        }
+
+        .account-btn:hover {
+            background: #e5e5e7;
+            color: #EC4E20;
+            transform: translateY(-1px);
+        }
+
+        .account-icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #6e6e73;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        .jobs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 28px;
+            margin-bottom: 12px;
+            border: 1px solid #e5e5e7;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .job-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border-color: #d2d2d7;
+        }
+
+        .job-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f5f5f7;
+            border: 1px solid #e5e5e7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1d1d1f;
+            flex-shrink: 0;
+        }
+
+        .job-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+            flex-shrink: 0;
+            min-width: 180px;
+        }
+
+        .company-name {
+            font-size: 0.875rem;
+            color: #6e6e73;
+            flex-shrink: 0;
+            min-width: 120px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 12px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: #6e6e73;
+            white-space: nowrap;
+        }
+
+        .meta-icon {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .job-tags {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 6px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            background: #f5f5f7;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            color: #1d1d1f;
+            font-weight: 500;
+            border: 1px solid #e5e5e7;
+            white-space: nowrap;
+        }
+
+        .tag.featured {
+            background: #fff3e6;
+            border-color: #ffd699;
+            color: #cc6600;
+        }
+
+        .no-jobs {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6e6e73;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .logo {
+                flex: none;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-menu {
+                gap: 6px;
+                padding: 4px 6px;
+                flex-wrap: wrap;
+                flex: none;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-item {
+                font-size: 0.7rem;
+                padding: 4px 6px;
+                gap: 3px;
+            }
+
+            .nav-icon {
+                width: 12px;
+                height: 12px;
+            }
+
+            .account-section {
+                flex: none;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .job-header {
+                flex-wrap: wrap;
+            }
+
+            .job-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .job-meta {
+                flex-wrap: wrap;
+            }
+
+            .job-tags {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">CashMySaaS</a>
+        
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <line x1="9" y1="17" x2="15" y2="17"></line>
+                </svg>
+                Calculator
+            </a>
+            <a href="marketplace.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                Marketplace
+            </a>
+            <a href="leaderboard.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                </svg>
+                Leaderboard
+            </a>
+            <a href="careers.html" class="nav-item active">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14,2 14,8 20,8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10,9 9,9 8,9"></polyline>
+                </svg>
+                Careers
+            </a>
+            <a href="partners.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M20 7h-9l-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <path d="M12 11v6m3-3l-3 3-3-3"></path>
+                </svg>
+                Partners
+            </a>
+            <a href="community.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5l-4.24 4.24M7.76 16.76l-4.24 4.24M16.24 7.76l4.24-4.24M7.76 7.76L3.52 3.52"></path>
+                </svg>
+                Community
+            </a>
+        </nav>
+        <div class="account-section">
+            <a href="#" class="account-btn">
+                <svg class="account-icon" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Account
+            </a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Join a high-growth startup</h1>
+        <p>Discover curated roles at today's best early-stage startups. Updated daily.</p>
+    </div>
+
+    <div class="jobs-container">
+        <div class="job-card">
+            <div class="job-header">
+                <div class="company-logo">SF</div>
+                <div class="job-info">
+                    <h2 class="job-title">Senior Full Stack Engineer</h2>
+                    <p class="company-name">StripeFlow</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            San Francisco, CA
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Full-time
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            $150k - $200k
+                        </div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag featured">Featured</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div class="company-logo">HC</div>
+                <div class="job-info">
+                    <h2 class="job-title">Product Designer</h2>
+                    <p class="company-name">HealthCore</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Remote
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Full-time
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            $120k - $160k
+                        </div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Figma</span>
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Design Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div class="company-logo">SC</div>
+                <div class="job-info">
+                    <h2 class="job-title">Growth Marketing Manager</h2>
+                    <p class="company-name">ShopConnect</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            New York, NY
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Full-time
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            $100k - $140k
+                        </div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag featured">Featured</span>
+                        <span class="tag">SEO</span>
+                        <span class="tag">Content Marketing</span>
+                        <span class="tag">Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div class="company-logo">TP</div>
+                <div class="job-info">
+                    <h2 class="job-title">Backend Engineer</h2>
+                    <p class="company-name">TaskPro</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Austin, TX
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Full-time
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            $130k - $180k
+                        </div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Kubernetes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div class="company-logo">MH</div>
+                <div class="job-info">
+                    <h2 class="job-title">Customer Success Lead</h2>
+                    <p class="company-name">MarketHub</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Remote
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Full-time
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            $90k - $120k
+                        </div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">SaaS</span>
+                        <span class="tag">Onboarding</span>
+                        <span class="tag">Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="job-card">
+            <div class="job-header">
+                <div class="company-logo">FD</div>
+                <div class="job-info">
+                    <h2 class="job-title">Data Analyst</h2>
+                    <p class="company-name">FinDash</p>
+                    <div class="job-meta">
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            Seattle, WA
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                            Full-time
+                        </div>
+                        <div class="meta-item">
+                            <svg class="meta-icon" viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            $110k - $150k
+                        </div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="tag">SQL</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Statistics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
