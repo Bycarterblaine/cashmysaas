@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard - CashMySaaS</title>
+    <title>CashMySaaS - Leaderboard</title>
     <style>
         * {
             margin: 0;
@@ -17,6 +17,7 @@
             color: #1d1d1f;
             line-height: 1.6;
             min-height: 100vh;
+            padding-bottom: 50px;
         }
 
         .header {
@@ -34,7 +35,6 @@
             font-weight: 600;
             color: #1d1d1f;
             text-decoration: none;
-            cursor: pointer;
             flex: 1;
         }
 
@@ -44,10 +44,10 @@
             padding: 4px 12px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 4px;
             border: 1px solid #e5e5e7;
             flex: 2;
-            justify-content: space-between;
         }
 
         .nav-item {
@@ -62,9 +62,6 @@
             border-radius: 20px;
             transition: all 0.2s ease;
             white-space: nowrap;
-            cursor: pointer;
-            flex: 1;
-            justify-content: center;
         }
 
         .nav-item:hover, .nav-item.active {
@@ -99,12 +96,11 @@
             transition: all 0.2s ease;
             background: #f5f5f7;
             border: 1px solid #e5e5e7;
-            cursor: pointer;
         }
 
         .account-btn:hover {
             background: #e5e5e7;
-            color: #7632EC;
+            color: #EC4E20;
             transform: translateY(-1px);
         }
 
@@ -116,283 +112,377 @@
             fill: none;
         }
 
-        .main-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 48px;
+        .container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
         }
 
         .page-title {
+            color: #1d1d1f;
             font-size: 2.5rem;
             font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 16px;
+            margin-bottom: 0.5rem;
+            text-align: center;
             letter-spacing: -0.02em;
         }
 
         .page-subtitle {
-            font-size: 1.1rem;
-            color: #6e6e73;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .marketplace-filters {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .filter-label {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #1d1d1f;
-        }
-
-        .filter-select, .filter-input {
-            padding: 10px 14px;
-            border: 1.5px solid #d2d2d7;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            background: white;
-            color: #1d1d1f;
-            min-width: 150px;
-        }
-
-        .filter-select:focus, .filter-input:focus {
-            outline: none;
-            border-color: #007aff;
-        }
-
-        .listings-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-            margin-bottom: 48px;
-        }
-
-        .listing-card {
-            background: white;
-            border-radius: 16px;
-            padding: 28px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .listing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .listing-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 16px;
-        }
-
-        .listing-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 4px;
-        }
-
-        .listing-category {
-            font-size: 0.75rem;
-            color: #6e6e73;
-            background: #f5f5f7;
-            padding: 4px 8px;
-            border-radius: 6px;
-        }
-
-        .listing-price {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #007aff;
-            text-align: right;
-        }
-
-        .listing-subtitle {
-            font-size: 0.75rem;
-            color: #6e6e73;
-            margin-top: 4px;
-        }
-
-        .listing-description {
-            color: #6e6e73;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .listing-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .metric {
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 4px;
-        }
-
-        .metric-label {
-            font-size: 0.7rem;
-            color: #6e6e73;
-        }
-
-        .listing-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid #f0f0f0;
-        }
-
-        .listing-date {
-            font-size: 0.75rem;
-            color: #6e6e73;
-        }
-
-        .btn-view {
-            background: #007aff;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .btn-view:hover {
-            background: #0056cc;
-            transform: translateY(-1px);
-        }
-
-        .cta-section {
-            background: white;
-            border-radius: 20px;
-            padding: 48px 32px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 16px;
-        }
-
-        .cta-description {
             color: #6e6e73;
             font-size: 1rem;
-            margin-bottom: 32px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 400;
         }
 
-        .btn-primary {
-            background: #007aff;
-            color: white;
-            padding: 14px 28px;
+        .leaderboard {
+            background: white;
             border-radius: 12px;
-            text-decoration: none;
-            font-size: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f8f9fa;
+            color: #1d1d1f;
+            border-bottom: 2px solid #e5e5e7;
+        }
+
+        th {
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid #e5e5e7;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+            transform: scale(1.01);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-right: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        .company-cell {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: #f5f5f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d1d1f;
+            font-weight: 600;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            border: 1px solid #e5e5e7;
+        }
+
+        .company-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .evaluation {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .revenue {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .churn {
+            font-weight: 600;
+        }
+
+        .churn.low {
+            color: #10b981;
+        }
+
+        .churn.medium {
+            color: #f59e0b;
+        }
+
+        .churn.high {
+            color: #ef4444;
+        }
+
+        .date {
+            color: #64748b;
+        }
+
+        .niche-fintech {
+            color: #1e40af;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: all 0.2s ease;
-            display: inline-block;
         }
 
-        .btn-primary:hover {
-            background: #0056cc;
-            transform: translateY(-2px);
+        .niche-healthcare {
+            color: #166534;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
-        @media (max-width: 768px) {
-            .header {
-                padding: 15px 20px;
-                flex-direction: column;
-                gap: 16px;
+        .niche-ecommerce {
+            color: #92400e;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .niche-productivity {
+            color: #6b21a8;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .niche-marketing {
+            color: #9f1239;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1rem;
             }
 
-            .logo {
-                flex: none;
-                text-align: center;
-                width: 100%;
-            }
-
-            .nav-menu {
-                gap: 6px;
-                padding: 4px 6px;
-                flex-wrap: wrap;
-                flex: none;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .nav-item {
-                font-size: 0.7rem;
-                padding: 4px 6px;
-                gap: 3px;
-            }
-
-            .nav-icon {
-                width: 12px;
-                height: 12px;
-            }
-
-            .account-section {
-                flex: none;
-                width: 100%;
-                justify-content: center;
-            }
-
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .marketplace-filters {
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .listings-grid {
-                flex-direction: column;
-            }
-
-            .main-container {
-                padding: 20px 10px;
+            th, td {
+                padding: 1rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">CashMySaaS</a>
+        
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="9" y1="9" x2="15" y2="9"></line>
+                    <line x1="9" y1="13" x2="15" y2="13"></line>
+                    <line x1="9" y1="17" x2="15" y2="17"></line>
+                </svg>
+                Calculator
+            </a>
+            <a href="marketplace.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                Marketplace
+            </a>
+            <a href="leaderboard.html" class="nav-item active">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                </svg>
+                Leaderboard
+            </a>
+            <a href="careers.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14,2 14,8 20,8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10,9 9,9 8,9"></polyline>
+                </svg>
+                Careers
+            </a>
+            <a href="partners.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <path d="M20 7h-9l-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+                    <path d="M12 11v6m3-3l-3 3-3-3"></path>
+                </svg>
+                Partners
+            </a>
+            <a href="community.html" class="nav-item">
+                <svg class="nav-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5l-4.24 4.24M7.76 16.76l-4.24 4.24M16.24 7.76l4.24-4.24M7.76 7.76L3.52 3.52"></path>
+                </svg>
+                Community
+            </a>
+        </nav>
+        <div class="account-section">
+            <a href="#" class="account-btn">
+                <svg class="account-icon" viewBox="0 0 24 24">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Account
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Top SaaS Companies</h1>
+        <p class="page-subtitle">Leading businesses ranked by evaluation and performance</p>
+
+        <div class="leaderboard">
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Evaluation</th>
+                            <th>Revenue</th>
+                            <th>Churn</th>
+                            <th>Date</th>
+                            <th>Niche</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">SP</div>
+                                    <span class="company-name">StripeFlow</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$2,450,000</td>
+                            <td class="revenue">$145,000</td>
+                            <td class="churn low">2.1%</td>
+                            <td class="date">03/15/2024</td>
+                            <td><span class="niche-fintech">Fintech</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">HC</div>
+                                    <span class="company-name">HealthCore</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$1,890,000</td>
+                            <td class="revenue">$98,500</td>
+                            <td class="churn low">1.8%</td>
+                            <td class="date">04/22/2024</td>
+                            <td><span class="niche-healthcare">Healthcare</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">SC</div>
+                                    <span class="company-name">ShopConnect</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$3,120,000</td>
+                            <td class="revenue">$210,000</td>
+                            <td class="churn medium">3.5%</td>
+                            <td class="date">02/08/2024</td>
+                            <td><span class="niche-ecommerce">E-Commerce</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">TP</div>
+                                    <span class="company-name">TaskPro</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$1,560,000</td>
+                            <td class="revenue">$82,000</td>
+                            <td class="churn low">2.4%</td>
+                            <td class="date">05/11/2024</td>
+                            <td><span class="niche-productivity">Productivity</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">MH</div>
+                                    <span class="company-name">MarketHub</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$2,780,000</td>
+                            <td class="revenue">$175,000</td>
+                            <td class="churn medium">4.2%</td>
+                            <td class="date">01/30/2024</td>
+                            <td><span class="niche-marketing">Marketing</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">FD</div>
+                                    <span class="company-name">FinDash</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$1,925,000</td>
+                            <td class="revenue">$115,000</td>
+                            <td class="churn low">2.9%</td>
+                            <td class="date">03/28/2024</td>
+                            <td><span class="niche-fintech">Fintech</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">WP</div>
+                                    <span class="company-name">WorkPlace</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$2,150,000</td>
+                            <td class="revenue">$132,000</td>
+                            <td class="churn low">2.7%</td>
+                            <td class="date">04/15/2024</td>
+                            <td><span class="niche-productivity">Productivity</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-logo">CM</div>
+                                    <span class="company-name">CartMaster</span>
+                                </div>
+                            </td>
+                            <td class="evaluation">$1,680,000</td>
+                            <td class="revenue">$95,000</td>
+                            <td class="churn high">5.1%</td>
+                            <td class="date">02/19/2024</td>
+                            <td><span class="niche-ecommerce">E-Commerce</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
